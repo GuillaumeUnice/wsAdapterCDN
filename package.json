@@ -1,0 +1,30 @@
+{
+  "name": "ws-jms-lib-cdn-echyzen",
+  "version": "0.0.7",
+  "description": "A Webpack deployment using TypeScript for a CDN library wich wrap WS-JMS technology just a simple Adapter Pattern",
+  "main": "dist/MyLib.min.js",
+  "scripts": {
+    "prepublish": "webpack --debug; webpack -p"
+  },
+  "keywords": [
+    "kaazing",
+    "typescript",
+    "adapterPattern"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "mocha": "^2.4.5",
+    "transfer-webpack-plugin": "^0.1.4",
+    "ts-loader": "^0.8.1",
+    "tslint": "^3.5.0",
+    "tslint-loader": "^2.1.0",
+    "typescript": "^1.8.2",
+    "webpack": "^1.12.14"
+  },
+  "dependencies": {
+    "kaazing-enterprise-client": "^4.1.0"
+  }
+}

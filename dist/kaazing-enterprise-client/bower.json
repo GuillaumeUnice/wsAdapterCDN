@@ -1,0 +1,23 @@
+{
+    "name": "kaazing-enterprise-client",
+    "homepage":"https://kaazing.com/",
+    "description": "Enterprise client libraries to communicate with Kaazing WebSocket Gateway",
+    "authors": [
+        "Kaazing Engineering <engineering@kaazing.com>"
+    ],
+    "keywords":[
+       "client",
+       "kaazing",
+       "enterprise",
+       "messaging",
+       "publish",
+       "real-time",
+       "realtime",
+       "subscribe",
+       "websocket",
+       "websockets"
+    ],
+    "license" : "SEE LICENSE IN LICENSE.txt",
+    "ignore": [],
+    "dependencies": {}
+}
