@@ -1,8 +1,8 @@
 var expect = require('chai').expect;
-var mylib = require('../dist/MyLib.min.js');
+var mylib = require('../dist/WsJmsLib.min.js');
 
 describe('TestClass', function () {
-  it('is contained within MyLib as CommonJS', function () {
+  it('is contained within WsJmsLib as CommonJS', function () {
     expect(mylib).to.be.an('object');
     expect(mylib.TestClass).to.not.be.null;
   });

@@ -10,11 +10,11 @@ interface connectionFuture {
 declare class JmsConnectionFactory {
     constructor(url: string);
     createConnection(callback: () => void) : connectionFuture;
+	getWebSocketFactory(): any;
 }
 
 interface textMessage {
 	setStringProperty(key: string, value: string): void;
-
 }
 
 interface Topic{}
@@ -29,7 +29,6 @@ interface Consumer {
 interface Producer {
 	close(): void;
 	send(message: textMessage,callback: Function): FutureException;
-
 }
 
 interface FutureException {
@@ -44,3 +43,5 @@ declare class Session {
 	createProducer(dest: Topic | Topic): Producer;
 	createConsumer(topic: Topic): Consumer;
 }
+
+declare function setupSSO(connectionFactory: any): void;

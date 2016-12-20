@@ -1,14 +1,5 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define("MyLib", [], factory);
-	else if(typeof exports === 'object')
-		exports["MyLib"] = factory();
-	else
-		root["MyLib"] = factory();
-})(this, function() {
-return /******/ (function(modules) { // webpackBootstrap
+var WsJmsLib =
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -59,14 +50,26 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var WsJMSLib_1 = __webpack_require__(2);
+	exports.wsJmsLib = WsJMSLib_1.wsJmsLib;
+
+
+/***/ },
+/* 2 */
 /***/ function(module, exports) {
 
-	/// <reference path="./JmsClient.d.ts" />
+	/// <reference path="./wsJMSKaazing.d.ts" />
 	"use strict";
 	var wsJmsLib = (function () {
-	    function wsJmsLib() {
-	    }
 	    //////////////////////////////////////////////////////////////////////////////////
+	    function wsJmsLib() {
+	        this.connection = {};
+	        this.session = {};
+	        this.consumers = {};
+	    }
 	    wsJmsLib.prototype.createDestination = function (name) {
 	        if (name.indexOf(wsJmsLib.baseTopicUrl) == 0) {
 	            return this.session.createTopic(name);
@@ -85,10 +88,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    //////////////////////////////////////////////////////////////////////////////////
 	    wsJmsLib.prototype.connect = function (url, callback) {
 	        var connectionFactory = new JmsConnectionFactory(url);
+	        var that = this;
 	        var connectionFuture = connectionFactory.createConnection(function () {
-	            this.connection = connectionFuture.getValue();
-	            this.session = this.connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-	            this.connection.start(function () {
+	            try {
+	                that.connection = connectionFuture.getValue();
+	            }
+	            catch (err) {
+	                console.error(err);
+	            }
+	            that.session = that.connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+	            that.connection.start(function () {
 	                callback();
 	            });
 	        });
@@ -138,7 +147,5 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }
-/******/ ])
-});
-;
-//# sourceMappingURL=MyLib.js.map
+/******/ ]);
+//# sourceMappingURL=WsJmsLib.js.map

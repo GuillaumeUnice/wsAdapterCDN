@@ -5,7 +5,7 @@ var webpack = require('webpack'),
 var TransferWebpackPlugin = require('transfer-webpack-plugin');
  
 
-var libraryName = 'MyLib',
+var libraryName = 'WsJmsLib',
     plugins = [ 
       new TransferWebpackPlugin([
             { from: 'kaazing-enterprise-client', to: '/kaazing-enterprise-client' }
@@ -44,9 +44,7 @@ var config = {
   output: {
     path: path.join(__dirname, '/dist'),
     filename: outputFile,
-    library: libraryName,
-    libraryTarget: 'umd',
-    umdNamedDefine: true
+    library: libraryName
   },
   module: {
     preLoaders: [

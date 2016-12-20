@@ -2,7 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "declaration": false,
-    "jsx": "react",
     "module": "commonjs",
     "noImplicitAny": true,
     "preserveConstEnums": true,
