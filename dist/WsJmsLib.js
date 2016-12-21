@@ -71,10 +71,12 @@ var WsJmsLib =
 	        this.consumers = {};
 	    }
 	    wsJmsLib.prototype.createDestination = function (name) {
-	        if (name.indexOf(wsJmsLib.baseTopicUrl) == 0) {
+	        var reTopic = new RegExp(wsJmsLib.baseTopicUrl, 'i');
+	        var reQueue = new RegExp(wsJmsLib.baseQueueUrl, 'i');
+	        if (name.match(reTopic)) {
 	            return this.session.createTopic(name);
 	        }
-	        else if (name.indexOf(wsJmsLib.baseQueueUrl) == 0) {
+	        else if (name.match(reQueue)) {
 	            return this.session.createQueue(name);
 	        }
 	        else {
@@ -104,6 +106,7 @@ var WsJmsLib =
 	    };
 	    ;
 	    wsJmsLib.prototype.subscribe = function (channelName, messageListener) {
+	        var _this = this;
 	        // assuming connection has already been established and started
 	        // ideally we need to maintain the state of the connection and throw error
 	        // if the controller calls subscribe before connection is established
@@ -111,7 +114,9 @@ var WsJmsLib =
 	        var topic = this.session.createTopic(channelName);
 	        var consumer = this.session.createConsumer(topic);
 	        this.consumers[channelName] = consumer;
-	        consumer.setMessageListener(messageListener);
+	        consumer.setMessageListener(function (message) {
+	            messageListener.call(_this, message.getText());
+	        });
 	    };
 	    ;
 	    wsJmsLib.prototype.send = function (message, topic, callback) {

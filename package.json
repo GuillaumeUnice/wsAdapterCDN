@@ -1,6 +1,6 @@
 {
   "name": "ws-jms-lib-cdn-echyzen",
-  "version": "0.0.16",
+  "version": "0.0.18",
   "description": "A Webpack deployment using TypeScript for a CDN library wich wrap WS-JMS technology just a simple Adapter Pattern",
   "main": "dist/WsJmsLib.min.js",
   "scripts": {

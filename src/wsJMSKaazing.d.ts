@@ -21,8 +21,12 @@ interface Topic{}
 
 interface Queue {}
 
+interface MessageListener {
+	getText(): void;
+}
+
 interface Consumer {
-	setMessageListener(callback: Function): void;
+	setMessageListener(callback: (message: MessageListener) => void): void;
 	close(callback: Function): void;
 }
 

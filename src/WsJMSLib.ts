@@ -14,11 +14,14 @@ export  class wsJmsLib {
 		this.session = {};
 		this.consumers = {};
 	}
+
 	private createDestination(name: string): Topic | Queue {
-		if (name.indexOf(wsJmsLib.baseTopicUrl) == 0) {
+		let reTopic = new RegExp(wsJmsLib.baseTopicUrl, 'i');
+		let reQueue = new RegExp(wsJmsLib.baseQueueUrl, 'i');
+		if (name.match(reTopic)) {
 			return this.session.createTopic(name);
 		}
-		else if (name.indexOf(wsJmsLib.baseQueueUrl) == 0) {
+		else if (name.match(reQueue)) {
 			return this.session.createQueue(name);
 		}
 		else {
@@ -60,7 +63,10 @@ export  class wsJmsLib {
 		let topic: Topic | Queue = this.session.createTopic(channelName);
 		let consumer: Consumer = this.session.createConsumer(topic);
 		this.consumers[channelName] = consumer;
-		consumer.setMessageListener(messageListener);
+		consumer.setMessageListener((message: MessageListener) => {
+			messageListener.call(this, message.getText());
+		});
+		
 	};
 
 
