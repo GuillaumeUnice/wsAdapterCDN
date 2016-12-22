@@ -47,5 +47,3 @@ declare class Session {
 	createProducer(dest: Topic | Topic): Producer;
 	createConsumer(topic: Topic): Consumer;
 }
-
-declare function setupSSO(connectionFactory: any): void;

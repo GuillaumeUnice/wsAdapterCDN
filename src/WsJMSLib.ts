@@ -36,7 +36,7 @@ export  class wsJmsLib {
 
 	//////////////////////////////////////////////////////////////////////////////////
 
-	public connect(url: string, callback: Function) {
+	public connect(url: string, callback?: Function) {
     let connectionFactory = new JmsConnectionFactory(url);
 
 		let that = this;
@@ -66,11 +66,10 @@ export  class wsJmsLib {
 		consumer.setMessageListener((message: MessageListener) => {
 			messageListener.call(this, message.getText());
 		});
-		
 	};
 
 
-	public send(message: string, topic: string, callback: Function): void {
+	public send(message: string, topic: string, callback?: Function): void {
 		let dest: Queue | Topic = this.createDestination(topic);
 		let producer: Producer = this.session.createProducer(dest);
     let textMessage: textMessage = this.buildMessage(message);
@@ -88,7 +87,7 @@ export  class wsJmsLib {
 			producer.close();
 	}
 
-  public unsubscribe(channelName: string, callback: Function) {
+  public unsubscribe(channelName: string, callback?: Function) {
     let consumer: Consumer = this.consumers[channelName];
     if (consumer) {
       delete this.consumers[channelName];
