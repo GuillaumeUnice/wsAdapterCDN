@@ -42,7 +42,7 @@ var config = {
   ],
   devtool: 'source-map',
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.join(__dirname, '/dist/CDN'),
     filename: outputFile,
     library: libraryName
   },
