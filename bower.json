@@ -1,0 +1,15 @@
+{
+  "name": "ws-jms-lib-cdn-echyzen",
+  "description": "A Webpack deployment using TypeScript for a CDN library wich wrap WS-JMS technology just a simple Adapter Pattern",
+  "main": "dist/CDN/WsJmsLib.js",
+  "authors": [
+    "GuillaumeUnice <guillaume.unice@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "kaazing",
+    "typescript",
+    "adapterPattern"
+  ],
+  "homepage": "https://github.com/GuillaumeUnice/wsAdapterCDN"
+}

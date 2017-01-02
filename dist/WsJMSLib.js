@@ -86,4 +86,3 @@ var wsJmsLib = (function () {
     return wsJmsLib;
 }());
 exports.wsJmsLib = wsJmsLib;
-//# sourceMappingURL=WsJMSLib.js.map
